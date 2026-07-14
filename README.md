@@ -1,34 +1,22 @@
 # Verilog HDL 🚀
 
-A collection of Verilog HDL implementations of digital logic circuits using **Gate-Level**, **Dataflow**, and **Behavioral** modeling styles. Each project includes a dedicated testbench and waveform simulation.
+A collection of **Verilog HDL** implementations of digital logic circuits using **Gate-Level**, **Dataflow**, and **Behavioral** modeling styles.
+
+Each project includes:
+- RTL Design
+- Testbench
+- GTKWave Simulation
+- FPGA-ready Verilog Code
 
 ---
 
-## 📚 Contents
-
-- Combinational Circuits
-- Sequential Circuits *(Coming Soon)*
-- RTL Design Projects *(Coming Soon)*
-
----
-
-## ✨ Features
-
-- ✅ Gate-Level Modeling
-- ✅ Dataflow Modeling
-- ✅ Behavioral Modeling
-- ✅ Testbenches
-- ✅ GTKWave Simulation
-- ✅ FPGA Compatible Designs (Quartus II)
-
----
-
-## 🛠️ Tools Used
+# 🛠 Tools
 
 - Visual Studio Code
 - Icarus Verilog
 - GTKWave
 - Quartus II Web Edition
+- Git & GitHub
 
 ---
 
@@ -41,7 +29,7 @@ A collection of Verilog HDL implementations of digital logic circuits using **Ga
 | Half Adder | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Full Adder | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Half Subtractor | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Full Subtractor | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
+| Full Subtractor | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Multiplexer | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
 | Demultiplexer | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
 | Encoder | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
@@ -50,99 +38,88 @@ A collection of Verilog HDL implementations of digital logic circuits using **Ga
 
 ---
 
-## 📁 Repository Structure
+# 📁 Repository Structure
 
 ```text
-Verilog-HDL
+Verilog
 │
-├── HalfAdder
-│   ├── halfadder_gatelevel.v
-│   ├── halfadder_dataflow.v
-│   ├── halfadder_behavioural.v
-│   ├── tb_halfadder.v
-│   └── Half Adder Wave.png
-│
-├── FullAdder
-│   ├── fulladder_gatelevel.v
-│   ├── fulladder_dataflow.v
-│   ├── fulladder_behavioural.v
-│   ├── tb_fulladder.v
-│   └── Full Adder Wave.png
-│
-├── HalfSubtractor
-│   ├── halfsubtractor_gatelevel.v
-│   ├── halfsubtractor_dataflow.v
-│   ├── halfsubtractor_behavioural.v
-│   ├── tb_halfsubtractor.v
-│   └── HalfSubtractor.png
-│
+├── HalfAdder/
+├── FullAdder/
+├── HalfSubtractor/
+├── FullSubtractor/
 ├── README.md
 └── .gitignore
 ```
 
 ---
 
-## ▶️ Simulation
+# ▶ Simulation
 
-Compile
+Example:
 
 ```bash
 iverilog -o output *.v
-```
-
-Run
-
-```bash
 vvp output
-```
-
-View waveform
-
-```bash
 gtkwave *.vcd
 ```
 
 ---
 
-## 🎯 Learning Roadmap
+# 📚 Learning Roadmap
 
-### ✅ Completed
+## ✅ Completed
 
 - Half Adder
 - Full Adder
 - Half Subtractor
-
-### 🚧 In Progress
-
 - Full Subtractor
 
-### 📌 Upcoming
+## 🚧 Coming Next
 
 - Multiplexer
 - Demultiplexer
 - Encoder
 - Decoder
 - Comparator
+- Priority Encoder
 - Ripple Carry Adder
 - Carry Look Ahead Adder
 - ALU
-- Flip-Flops
-- Registers
-- Counters
-- Shift Registers
-- Finite State Machines (FSM)
-- UART
-- SPI
-- I2C
-- RISC-V Components
 
 ---
 
-## 🎯 Goals
+## 🔜 Sequential Circuits
+
+- SR Flip-Flop
+- JK Flip-Flop
+- D Flip-Flop
+- T Flip-Flop
+- Registers
+- Counters
+- Shift Registers
+- Finite State Machines
+
+---
+
+## 🚀 Long-Term Goals
+
+- UART
+- SPI
+- I2C
+- PWM Generator
+- Traffic Light Controller
+- Vending Machine FSM
+- RISC-V Components
+- FPGA Implementation
+- ASIC Frontend Design
+
+---
+
+# 🎯 Objective
 
 This repository documents my learning journey in:
 
-- Digital System Design
+- Digital Logic Design
 - RTL Design
 - FPGA Development
 - VLSI Frontend
@@ -151,4 +128,6 @@ This repository documents my learning journey in:
 
 ---
 
-⭐ **If you find this repository useful, consider giving it a star!**
+⭐ If you find this repository useful, consider giving it a **Star**.
+
+Happy Coding! 🚀
