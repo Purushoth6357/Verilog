@@ -2,12 +2,11 @@ module FullSubtractor_GateLevel (
     input A, B, Bin,
     output D, Bout
 );
-    wire notA, notB, notBin;
+
+    wire notA;
     wire and1_out, and2_out, and3_out;
 
     not (notA, A);
-    not (notB, B);
-    not (notBin, Bin);
 
     xor (D, A, B, Bin);
 
