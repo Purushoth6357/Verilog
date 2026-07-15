@@ -28,7 +28,8 @@ module tb_halfsubtractor;
 
     initial begin
     
-        $monitor("Time: %0t | A: %b | B: %b | D1: %b | Bout1: %b | D2: %b | Bout2: %b | D3: %b | Bout3: %b", $time, A, B, D1, Bout1, D2, Bout2, D3, Bout3);
+        $monitor("Time: %0t | A: %b | B: %b | D1: %b | Bout1: %b | D2: %b | Bout2: %b | D3: %b | Bout3: %b", 
+        $time, A, B, D1, Bout1, D2, Bout2, D3, Bout3);
     
         $dumpfile("halfsubtractor.vcd");
         $dumpvars(0, tb_halfsubtractor);
