@@ -8,13 +8,7 @@ module tb_RCS4b;
     wire [3:0] D;
     wire Bout;
 
-    RCS4b uut(
-        .A(A),
-        .B(B),
-        .Bin(Bin),
-        .D(D),
-        .Bout(Bout)
-    );
+    RCS4b uut( .A(A), .B(B), .Bin(Bin), .D(D), .Bout(Bout));
 
     initial begin
         $dumpfile("tb_RCS4b.vcd");
