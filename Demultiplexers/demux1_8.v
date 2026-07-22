@@ -1,92 +1,31 @@
 module demux1_8(
     input D,
     input [2:0] S,
-    output reg Y0, Y1, Y2, Y3, Y4, Y5, Y6, Y7
+    output Y0, Y1, Y2, Y3, Y4, Y5, Y6, Y7
 );
-    always @(*) begin
-        case (S)
-            3'b000: begin
-                Y0 = D;
-                Y1 = 0;
-                Y2 = 0;
-                Y3 = 0;
-                Y4 = 0;
-                Y5 = 0;
-                Y6 = 0;
-                Y7 = 0;
-            end
-            3'b001: begin
-                Y0 = 0;
-                Y1 = D;
-                Y2 = 0;
-                Y3 = 0;
-                Y4 = 0;
-                Y5 = 0;
-                Y6 = 0;
-                Y7 = 0;
-            end
-            3'b010: begin
-                Y0 = 0;
-                Y1 = 0;
-                Y2 = D;
-                Y3 = 0;
-                Y4 = 0;
-                Y5 = 0;
-                Y6 = 0;
-                Y7 = 0;
-            end
-            3'b011: begin
-                Y0 = 0;
-                Y1 = 0;
-                Y2 = 0;
-                Y3 = D;
-                Y4 = 0;
-                Y5 = 0;
-                Y6 = 0;
-                Y7 = 0;
-            end
-            3'b100: begin
-                Y0 = 0;
-                Y1 = 0;
-                Y2 = 0;
-                Y3 = 0;
-                Y4 = D;
-                Y5 = 0;
-                Y6 = 0;
-                Y7 = 0;
-            end
-            3'b101: begin 
-                Y0 = 0;
-                Y1 = 0;
-                Y2 = 0;
-                Y3 = 0;
-                Y4 = 0;
-                Y5 = D;
-                Y6 = 0;
-                Y7 = 0;
-            end
 
-            3'b110: begin
-                Y0 = 0;
-                Y1 = 0;
-                Y2 = 0;
-                Y3 = 0;
-                Y4 = 0;
-                Y5 = 0;
-                Y6 = D;
-                Y7 = 0;
-            end
+    wire w1, w2;
+    assign w1 = D & ~S[2];
+    assign w2 = D & S[2];
 
-            3'b111: begin
-                Y0 = 0;
-                Y1 = 0;
-                Y2 = 0;
-                Y3 = 0;
-                Y4 = 0;
-                Y5 = 0;
-                Y6 = 0;
-                Y7 = D;
-            end
-        endcase
-    end
+    demux1_4 demux0 (
+        .D(w1),
+        .S(S[1:0]),
+        .Y0(Y0),
+        .Y1(Y1),
+        .Y2(Y2),
+        .Y3(Y3)
+    );
+
+    demux1_4 demux1 (
+        .D(w2),
+        .S(S[1:0]),
+        .Y0(Y4),
+        .Y1(Y5),
+        .Y2(Y6),
+        .Y3(Y7)
+    );
+
+    
+
 endmodule
