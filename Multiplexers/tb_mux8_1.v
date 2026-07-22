@@ -5,18 +5,7 @@ reg D0, D1, D2, D3, D4, D5, D6, D7;
 reg [2:0] S;
 wire Y;
 
-mux8_1 uut(
-    .D0(D0),
-    .D1(D1),
-    .D2(D2),
-    .D3(D3),
-    .D4(D4),
-    .D5(D5),
-    .D6(D6),
-    .D7(D7),
-    .S(S),
-    .Y(Y)
-);
+mux8_1 uut( .D0(D0), .D1(D1), .D2(D2), .D3(D3), .D4(D4), .D5(D5), .D6(D6), .D7(D7), .S(S), .Y(Y) );
 
 initial begin
     $dumpfile("tb_mux8_1.vcd");
