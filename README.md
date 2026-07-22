@@ -1,17 +1,20 @@
-# Verilog HDL 🚀
+# 🚀 Verilog HDL
 
-A collection of **Verilog HDL** implementations of digital logic circuits using **Gate-Level**, **Dataflow**, and **Behavioral** modeling styles.
+A structured collection of **Verilog HDL** projects built while learning **Digital Design**, **RTL Design**, **FPGA Development**, and **ASIC Frontend Engineering**.
 
 Each project includes:
+
 - RTL Design
 - Testbench
-- GTKWave Simulation
-- FPGA-ready Verilog Code
+- Simulation
+- GTKWave Waveform
+- FPGA-Compatible Verilog
 
 ---
 
-# 🛠 Tools
+## 🛠 Tools
 
+- Verilog HDL
 - Visual Studio Code
 - Icarus Verilog
 - GTKWave
@@ -20,42 +23,127 @@ Each project includes:
 
 ---
 
-# 📂 Projects
-
-## Combinational Circuits
-
-| Project | Gate | Dataflow | Behavioral | Testbench | Waveform |
-|---------|:----:|:--------:|:----------:|:---------:|:--------:|
-| Half Adder | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Full Adder | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Half Subtractor | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Full Subtractor | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Multiplexer | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
-| Demultiplexer | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
-| Encoder | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
-| Decoder | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
-| Comparator | ⏳ | ⏳ | ⏳ | ⏳ | ⏳ |
-
----
-
-# 📁 Repository Structure
+## 📂 Repository Structure
 
 ```text
-Verilog
+Verilog-HDL/
 │
-├── HalfAdder/
-├── FullAdder/
-├── HalfSubtractor/
-├── FullSubtractor/
-├── README.md
-└── .gitignore
+├── Combinational/
+├── Arithmetic/
+├── Sequential/
+├── Communication/
+├── Processor/
+├── FPGA/
+└── README.md
 ```
 
 ---
 
-# ▶ Simulation
+# 🗺 Learning Roadmap
 
-Example:
+## Phase 1 — Combinational Logic ✅
+
+- [x] Half Adder
+- [x] Full Adder
+- [x] Half Subtractor
+- [x] Full Subtractor
+- [x] 4:1 Multiplexer
+- [ ] 8:1 Multiplexer
+- [ ] Demultiplexer
+- [ ] Encoder
+- [ ] Priority Encoder
+- [ ] Decoder
+- [ ] Comparator
+- [ ] Code Converter
+- [ ] Parity Generator & Checker
+
+---
+
+## Phase 2 — Arithmetic Circuits
+
+- [x] Ripple Carry Adder
+- [x] Ripple Carry Subtractor
+- [x] Carry Look Ahead Adder
+- [ ] Carry Select Adder
+- [ ] Carry Skip Adder
+- [ ] Carry Save Adder
+- [ ] Arithmetic Logic Unit (ALU)
+
+---
+
+## Phase 3 — Sequential Logic
+
+- [ ] SR Flip-Flop
+- [ ] JK Flip-Flop
+- [ ] D Flip-Flop
+- [ ] T Flip-Flop
+- [ ] Registers
+- [ ] Shift Registers
+- [ ] Ring Counter
+- [ ] Johnson Counter
+- [ ] Synchronous Counter
+- [ ] Asynchronous Counter
+
+---
+
+## Phase 4 — Finite State Machines
+
+- [ ] Sequence Detector
+- [ ] Traffic Light Controller
+- [ ] Elevator Controller
+- [ ] Vending Machine
+- [ ] Digital Lock
+- [ ] Washing Machine Controller
+
+---
+
+## Phase 5 — Communication Protocols
+
+- [ ] UART
+- [ ] SPI
+- [ ] I²C
+- [ ] PWM Generator
+- [ ] FIFO
+- [ ] RAM
+- [ ] ROM
+
+---
+
+## Phase 6 — Processor Components
+
+- [ ] Register File
+- [ ] Program Counter
+- [ ] Control Unit
+- [ ] Instruction Decoder
+- [ ] ALU Control
+- [ ] Data Memory
+- [ ] Instruction Memory
+- [ ] Pipeline Registers
+
+---
+
+## Phase 7 — Processor Design
+
+- [ ] Single Cycle CPU
+- [ ] Multi Cycle CPU
+- [ ] 5-Stage Pipelined RISC-V Processor
+
+---
+
+## Phase 8 — FPGA Projects
+
+- [ ] LED Controller
+- [ ] Digital Clock
+- [ ] Stopwatch
+- [ ] Seven Segment Display Driver
+- [ ] UART on FPGA
+- [ ] VGA Controller
+- [ ] Calculator SoC
+- [ ] FPGA Mini Projects
+
+---
+
+# ▶ Running Simulation
 
 ```bash
 iverilog -o output *.v
@@ -65,69 +153,21 @@ gtkwave *.vcd
 
 ---
 
-# 📚 Learning Roadmap
+# 🎯 Goal
 
-## ✅ Completed
+This repository documents my journey toward becoming a **VLSI Frontend / FPGA Design Engineer**, progressing from basic digital logic to complete processor design and FPGA implementation.
 
-- Half Adder
-- Full Adder
-- Half Subtractor
-- Full Subtractor
+### Skills Covered
 
-## 🚧 Coming Next
-
-- Multiplexer
-- Demultiplexer
-- Encoder
-- Decoder
-- Comparator
-- Priority Encoder
-- Ripple Carry Adder
-- Carry Look Ahead Adder
-- ALU
-
----
-
-## 🔜 Sequential Circuits
-
-- SR Flip-Flop
-- JK Flip-Flop
-- D Flip-Flop
-- T Flip-Flop
-- Registers
-- Counters
-- Shift Registers
-- Finite State Machines
-
----
-
-## 🚀 Long-Term Goals
-
-- UART
-- SPI
-- I2C
-- PWM Generator
-- Traffic Light Controller
-- Vending Machine FSM
-- RISC-V Components
-- FPGA Implementation
-- ASIC Frontend Design
-
----
-
-# 🎯 Objective
-
-This repository documents my learning journey in:
-
-- Digital Logic Design
+- Verilog HDL
 - RTL Design
+- Digital Logic Design
+- Digital Verification
 - FPGA Development
-- VLSI Frontend
-- ASIC Design Flow
-- RISC-V Processor Design
+- ASIC Frontend
+- Computer Architecture
+- RISC-V Design
 
 ---
 
 ⭐ If you find this repository useful, consider giving it a **Star**.
-
-Happy Coding! 🚀
