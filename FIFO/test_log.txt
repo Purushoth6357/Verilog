@@ -1,0 +1,235 @@
+Time resolution is 1 ps
+
+====================================
+       SYNCHRONOUS FIFO TEST         
+====================================
+
+
+TEST 1: RESET
+PASS: Reset successful
+
+TEST 2: SINGLE WRITE AND READ
+PASS: Data check | dout=00
+TXN: WR=1 RD=0 DIN=a5 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=a5
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 3: MULTIPLE WRITES
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=00 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=ff | Accepted: W=1 R=0 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=aa | Accepted: W=1 R=0 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=55 | Accepted: W=1 R=0 | Count=4 | FULL=0 EMPTY=0
+
+TEST 4: FIFO FULL CONDITION
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=11 | Accepted: W=1 R=0 | Count=5 | FULL=1 EMPTY=0
+PASS: FIFO reached FULL
+
+TEST 5: WRITE WHILE FULL
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=de | Accepted: W=0 R=0 | Count=5 | FULL=1 EMPTY=0
+INFO: Illegal write attempted while FULL
+PASS: Data check | dout=a5
+TXN: WR=1 RD=0 DIN=ad | Accepted: W=0 R=0 | Count=5 | FULL=1 EMPTY=0
+INFO: Illegal write attempted while FULL
+
+TEST 6: DRAIN FIFO
+PASS: Data check | dout=00
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=ff
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=aa
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=55
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=11
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 7: READ WHILE EMPTY
+PASS: Data check | dout=11
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=0 | Count=0 | FULL=0 EMPTY=1
+INFO: Illegal read attempted while EMPTY
+PASS: Data check | dout=11
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=0 | Count=0 | FULL=0 EMPTY=1
+INFO: Illegal read attempted while EMPTY
+
+TEST 8: SIMULTANEOUS READ AND WRITE
+PASS: Data check | dout=11
+TXN: WR=1 RD=0 DIN=12 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=11
+TXN: WR=1 RD=0 DIN=34 | Accepted: W=1 R=0 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=12
+TXN: WR=1 RD=1 DIN=56 | Accepted: W=1 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=34
+TXN: WR=1 RD=1 DIN=78 | Accepted: W=1 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=56
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=78
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 9: POINTER WRAP-AROUND
+PASS: Data check | dout=78
+TXN: WR=1 RD=0 DIN=00 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=00
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=00
+TXN: WR=1 RD=0 DIN=01 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=01
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=01
+TXN: WR=1 RD=0 DIN=02 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=02
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=02
+TXN: WR=1 RD=0 DIN=03 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=03
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=03
+TXN: WR=1 RD=0 DIN=04 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=04
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=04
+TXN: WR=1 RD=0 DIN=05 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=05
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=05
+TXN: WR=1 RD=0 DIN=06 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=06
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=06
+TXN: WR=1 RD=0 DIN=07 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=07
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=07
+TXN: WR=1 RD=0 DIN=08 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=08
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=08
+TXN: WR=1 RD=0 DIN=09 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=09
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=09
+TXN: WR=1 RD=0 DIN=0a | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0a
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=0a
+TXN: WR=1 RD=0 DIN=0b | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0b
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=0b
+TXN: WR=1 RD=0 DIN=0c | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0c
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=0c
+TXN: WR=1 RD=0 DIN=0d | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0d
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=0d
+TXN: WR=1 RD=0 DIN=0e | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0e
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 10: DATA PATTERNS
+PASS: Data check | dout=0e
+TXN: WR=1 RD=0 DIN=00 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0e
+TXN: WR=1 RD=0 DIN=ff | Accepted: W=1 R=0 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=0e
+TXN: WR=1 RD=0 DIN=aa | Accepted: W=1 R=0 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=0e
+TXN: WR=1 RD=0 DIN=55 | Accepted: W=1 R=0 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=0e
+TXN: WR=1 RD=0 DIN=01 | Accepted: W=1 R=0 | Count=5 | FULL=1 EMPTY=0
+PASS: Data check | dout=00
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=ff
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=aa
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=55
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=01
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 11: SIMULTANEOUS OPERATION AT EMPTY
+PASS: Data check | dout=01
+TXN: WR=1 RD=1 DIN=b1 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+INFO: Illegal read attempted while EMPTY
+PASS: Data check | dout=b1
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 12: SIMULTANEOUS OPERATION AT FULL
+PASS: Data check | dout=b1
+TXN: WR=1 RD=0 DIN=10 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=b1
+TXN: WR=1 RD=0 DIN=20 | Accepted: W=1 R=0 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=b1
+TXN: WR=1 RD=0 DIN=30 | Accepted: W=1 R=0 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=b1
+TXN: WR=1 RD=0 DIN=40 | Accepted: W=1 R=0 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=b1
+TXN: WR=1 RD=0 DIN=50 | Accepted: W=1 R=0 | Count=5 | FULL=1 EMPTY=0
+PASS: Data check | dout=10
+TXN: WR=1 RD=1 DIN=60 | Accepted: W=0 R=1 | Count=4 | FULL=0 EMPTY=0
+INFO: Illegal write attempted while FULL
+PASS: Data check | dout=20
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=30
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=40
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=50
+TXN: WR=0 RD=1 DIN=00 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+
+TEST 13: RANDOMIZED TESTING
+PASS: Data check | dout=50
+TXN: WR=1 RD=0 DIN=84 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=84
+TXN: WR=1 RD=1 DIN=0f | Accepted: W=1 R=1 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=0f
+TXN: WR=0 RD=1 DIN=80 | Accepted: W=0 R=1 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=0f
+TXN: WR=0 RD=0 DIN=4c | Accepted: W=0 R=0 | Count=0 | FULL=0 EMPTY=1
+PASS: Data check | dout=0f
+TXN: WR=1 RD=1 DIN=64 | Accepted: W=1 R=0 | Count=1 | FULL=0 EMPTY=0
+INFO: Illegal read attempted while EMPTY
+PASS: Data check | dout=64
+TXN: WR=1 RD=1 DIN=9b | Accepted: W=1 R=1 | Count=1 | FULL=0 EMPTY=0
+PASS: Data check | dout=64
+TXN: WR=1 RD=0 DIN=d8 | Accepted: W=1 R=0 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=64
+TXN: WR=1 RD=0 DIN=68 | Accepted: W=1 R=0 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=64
+TXN: WR=1 RD=0 DIN=07 | Accepted: W=1 R=0 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=64
+TXN: WR=0 RD=0 DIN=41 | Accepted: W=0 R=0 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=9b
+TXN: WR=0 RD=1 DIN=8f | Accepted: W=0 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=d8
+TXN: WR=1 RD=1 DIN=26 | Accepted: W=1 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=68
+TXN: WR=1 RD=1 DIN=56 | Accepted: W=1 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=07
+TXN: WR=1 RD=1 DIN=fd | Accepted: W=1 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=07
+TXN: WR=1 RD=0 DIN=70 | Accepted: W=1 R=0 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=07
+TXN: WR=1 RD=0 DIN=e0 | Accepted: W=1 R=0 | Count=5 | FULL=1 EMPTY=0
+PASS: Data check | dout=07
+TXN: WR=0 RD=0 DIN=fd | Accepted: W=0 R=0 | Count=5 | FULL=1 EMPTY=0
+PASS: Data check | dout=26
+TXN: WR=0 RD=1 DIN=8a | Accepted: W=0 R=1 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=56
+TXN: WR=1 RD=1 DIN=09 | Accepted: W=1 R=1 | Count=4 | FULL=0 EMPTY=0
+PASS: Data check | dout=fd
+TXN: WR=0 RD=1 DIN=b1 | Accepted: W=0 R=1 | Count=3 | FULL=0 EMPTY=0
+PASS: Data check | dout=70
+TXN: WR=0 RD=1 DIN=6b | Accepted: W=0 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=e0
+TXN: WR=1 RD=1 DIN=64 | Accepted: W=1 R=1 | Count=2 | FULL=0 EMPTY=0
+PASS: Data check | dout=e0
+TXN: WR=0 RD=0 DIN=a4 | Accepted: W=0 R=0 | Count=2 | FULL=0 EMPTY=0
