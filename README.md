@@ -30,7 +30,8 @@ The emphasis is on **designing, testing, debugging, and understanding hardware**
 | Arithmetic Circuits | [Ripple Carry Adder](./RippleCarryAdder), [Ripple Carry Subtractor](./RippleCarrySubtractor), [Carry Look-Ahead Adder](./CLA), [Multiplier](./Multiplier), [8-bit Adder](./8%20bit%20Adder) |
 | Datapath Design | [4-bit ALU](./4BitALU) |
 | Sequential Logic | [Flip-Flops](./FlipFlops), [Registers](./Registers) |
-| Design Exercises | [FIFO](./FIFO), [Traffic Light Controller](./TrafficLight) |
+| FIFO Architectures | [Synchronous FIFO](./FIFO), [Asynchronous FIFO](./Asynchronous%20FIFO) |
+| FSM Design | [Traffic Light Controller](./TrafficLight) |
 
 > The repository evolves as new designs, testbenches, and experiments are added. Check each project directory for its current RTL and verification files.
 
@@ -137,7 +138,8 @@ This roadmap tracks the areas I am exploring. A checked item indicates that a pr
 
 ### 05 — RTL Building Blocks and Interfaces
 
-- [x] FIFO
+- [x] Synchronous FIFO
+- [x] Asynchronous FIFO
 - [ ] Single-Port RAM
 - [ ] Dual-Port RAM
 - [ ] ROM
@@ -170,6 +172,33 @@ This roadmap tracks the areas I am exploring. A checked item indicates that a pr
 - [ ] VGA Controller
 - [ ] FPGA Calculator
 
+## Featured RTL Work — Asynchronous FIFO
+
+The repository now includes a modular **dual-clock asynchronous FIFO** implementation.
+
+[Open the Asynchronous FIFO project](./Asynchronous%20FIFO)
+
+| Module | Responsibility |
+|---|---|
+| `async_fifo.v` | Top-level integration of the FIFO blocks |
+| `fifo_mem.v` | Storage array and read/write data handling |
+| `wptr_handler.v` | Write-side pointer, Gray-code conversion, and full detection |
+| `rptr_handler.v` | Read-side pointer, Gray-code conversion, and empty detection |
+| `synchronizer.v` | Clock-domain synchronization of Gray-coded pointers |
+| `tb_async_fifo.sv` | Simulation testbench |
+
+**Concepts explored:**
+- Independent read and write clock domains.
+- Binary pointers for memory addressing.
+- Gray-coded pointers for safer clock-domain crossing.
+- Two-stage synchronization of pointers between clock domains.
+- Full and empty flag generation.
+- Separation of memory, pointer logic, synchronization, and top-level integration.
+
+The project includes a dedicated SystemVerilog testbench and waveform screenshots. Review the testbench and simulation output in the project directory for the exercised scenarios.
+
+> Important: RTL simulation is not a substitute for CDC analysis, timing constraints, or hardware validation. An FPGA implementation should include appropriate clock constraints and CDC review.
+
 ## Design Principles
 
 The concepts I aim to develop through these projects:
@@ -186,7 +215,7 @@ The concepts I aim to develop through these projects:
 The next stage is to move beyond isolated circuits and focus on larger digital systems:
 
 - Build stronger testbenches and reusable verification practices.
-- Explore synchronous and asynchronous FIFO architectures.
+- Deepen FIFO verification, including asynchronous clock-domain corner cases.
 - Solve more RTL design problems.
 - Develop and simulate datapaths and control logic.
 - Explore FPGA implementation using Vivado and Quartus.
