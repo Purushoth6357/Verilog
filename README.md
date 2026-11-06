@@ -1,240 +1,285 @@
-# Verilog HDL — RTL Design & Digital Systems
+# Verilog HDL — RTL Design, IP Integration & Verification
 
 <p align="center">
-  <strong>Learning digital hardware by designing, simulating, debugging, and implementing RTL.</strong>
+  <strong>Learning digital hardware by designing RTL, building reusable IP, writing testbenches, and debugging waveforms.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Language-Verilog%20%2F%20SystemVerilog-blue?style=flat-square" alt="Verilog and SystemVerilog">
-  <img src="https://img.shields.io/badge/Focus-RTL%20Design-6f42c1?style=flat-square" alt="RTL Design">
-  <img src="https://img.shields.io/badge/Simulation-Icarus%20Verilog-orange?style=flat-square" alt="Icarus Verilog">
-  <img src="https://img.shields.io/badge/Verification-Verilator-2ea44f?style=flat-square" alt="Verilator">
-  <img src="https://img.shields.io/badge/Waveforms-GTKWave-blue?style=flat-square" alt="GTKWave">
+  <img src="https://img.shields.io/badge/HDL-Verilog%20%7C%20SystemVerilog-blue?style=flat-square" alt="Verilog and SystemVerilog">
+  <img src="https://img.shields.io/badge/Focus-RTL%20Design-6f42c1?style=flat-square" alt="RTL design">
+  <img src="https://img.shields.io/badge/Verification-Icarus%20%7C%20Verilator-2ea44f?style=flat-square" alt="Verification tools">
+  <img src="https://img.shields.io/badge/Waveforms-GTKWave-orange?style=flat-square" alt="GTKWave">
+  <img src="https://img.shields.io/badge/FPGA-Quartus%20%7C%20Vivado-informational?style=flat-square" alt="FPGA tools">
 </p>
 
 ---
 
-## About This Repository
+## About
 
-This repository is a hands-on collection of **Verilog HDL and SystemVerilog projects** covering digital logic, arithmetic datapaths, sequential circuits, finite-state machines, RTL interfaces, and FPGA-oriented designs.
+This repository contains hands-on **Verilog HDL and SystemVerilog RTL designs** developed while learning digital design, computer architecture, on-chip interfaces, and design verification.
 
-The work progresses from small logic blocks to larger architectures such as FIFOs, a UART receiver, and an FPGA image-processing accelerator. Each project is organised in its own directory and may include RTL source files, testbenches, simulation output, or hardware implementation evidence.
+The projects progress from basic combinational logic to datapaths, sequential circuits, FIFO architectures, serial communication blocks, bus-connected peripherals, and FPGA-oriented image processing.
 
-The goal is to build practical skills in:
+The focus is practical RTL engineering:
 
-- Writing synthesizable RTL and understanding the hardware it describes.
-- Breaking designs into reusable modules.
-- Creating testbenches and checking functional behaviour.
-- Debugging simulations with waveform viewers.
-- Understanding timing, reset behaviour, and clock-domain crossing.
-- Preparing RTL for FPGA synthesis and implementation.
+- Translating a hardware specification into synthesizable RTL.
+- Structuring designs into clear, reusable modules.
+- Developing directed, boundary, corner-case, and randomized test sequences.
+- Checking expected behaviour with testbench scoreboards and logs.
+- Debugging timing and control behaviour using GTKWave.
+- Exploring FPGA synthesis and implementation workflows.
 
-## Repository Contents
+## Repository Map
 
-### Combinational Logic
+### 1. Combinational Logic
 
-| Project | Description |
+| Design | What it covers |
 |---|---|
-| [Half Adder](./HalfAdder) | One-bit binary addition |
-| [Full Adder](./FullAdder) | One-bit addition with carry-in |
+| [Half Adder](./HalfAdder) | One-bit addition |
+| [Full Adder](./FullAdder) | Addition with carry-in; behavioural, dataflow, and gate-level styles |
 | [Half Subtractor](./HalfSubractor) | One-bit subtraction |
-| [Full Subtractor](./FullSubtractor) | One-bit subtraction with borrow-in |
-| [Multiplexers](./Multiplexers) | Data selection logic |
-| [Demultiplexers](./Demultiplexers) | Data distribution logic |
+| [Full Subtractor](./FullSubtractor) | Subtraction with borrow-in |
+| [Multiplexers](./Multiplexers) | Combinational data selection |
+| [Demultiplexers](./Demultiplexers) | Combinational data distribution |
 
-### Arithmetic and Datapath Design
+### 2. Arithmetic Datapaths
 
-| Project | Description |
+| Design | What it covers |
 |---|---|
-| [8-bit Adder](./8%20bit%20Adder) | Eight-bit binary addition |
-| [Ripple Carry Adder](./RippleCarryAdder) | Cascaded full-adder architecture |
+| [8-bit Adder](./8%20bit%20Adder) | Multi-bit binary addition and FPGA implementation evidence |
+| [Ripple Carry Adder](./RippleCarryAdder) | Cascaded carry propagation |
 | [Ripple Carry Subtractor](./RippleCarrySubtractor) | Multi-bit subtraction |
-| [Carry Look-Ahead Adder](./CLA) | Carry computation using generate/propagate logic |
+| [Carry Look-Ahead Adder](./CLA) | Generate/propagate carry logic |
 | [Multiplier](./Multiplier) | RTL multiplier design |
-| [4-bit ALU](./4BitALU) | Arithmetic and logic operations in one datapath |
+| [4-bit ALU](./4BitALU) | Combined arithmetic and logic operations |
 
-### Sequential Logic and Control
+### 3. Sequential Logic and Control
 
-| Project | Description |
+| Design | What it covers |
 |---|---|
 | [Flip-Flops](./FlipFlops) | Sequential storage elements |
 | [Registers](./Registers) | Multi-bit storage |
-| [Traffic Light Controller](./TrafficLight) | FSM-based traffic signal control |
+| [Traffic Light Controller](./TrafficLight) | FSM-based controller |
 
-### FIFO Architectures
+### 4. FIFO and Memory-Oriented Designs
 
-| Project | Description |
+| Design | What it covers |
 |---|---|
-| [Synchronous FIFO](./FIFO) | FIFO with a common read/write clock |
-| [Asynchronous FIFO](./Asynchronous%20FIFO) | Dual-clock FIFO with pointer synchronization |
+| [Synchronous FIFO](./FIFO) | Common-clock FIFO, pointer and occupancy behaviour |
+| [Asynchronous FIFO](./Asynchronous%20FIFO) | Independent read/write clocks, Gray-coded pointers, synchronizer stages, and full/empty logic |
 
-### Communication and Image Processing
+### 5. Serial Communication
 
-| Project | Description |
+| Design | What it covers |
 |---|---|
-| [UART Receiver](./UART/UART%20receiver) | Serial data reception with a SystemVerilog testbench |
-| [FPGA Image Processing Accelerator](./ImageProcessingAccelerator) | Image processing RTL with image ROM and VGA output |
+| [UART Receiver](./UART/UART%20receiver) | UART serial reception and SystemVerilog testbench |
+| [UART Transmitter](./UART/UART%20Transmitter) | Parameterized baud timing, FSM-based framing, LSB-first transmission, and SystemVerilog verification |
+
+### 6. Bus-Based IP and Peripherals
+
+| Design | What it covers |
+|---|---|
+| [APB Timer](./Bus-Based%20protocol%20peripheral/APB%20Timer) | APB3 memory-mapped timer peripheral with register read/write access, countdown logic, status, and error response |
+
+### 7. FPGA-Oriented Image Processing
+
+| Design | What it covers |
+|---|---|
+| [Image Processing Accelerator](./ImageProcessingAccelerator) | ROM-based image input, pixel-processing core, line-buffer-based operations, and VGA display interface |
 
 ---
 
-## Featured Projects
+## Featured RTL Projects
 
-### 1. Asynchronous FIFO
+### APB3 Timer Peripheral
 
-[View project source](./Asynchronous%20FIFO)
+[Explore the APB Timer source and testbench](./Bus-Based%20protocol%20peripheral/APB%20Timer)
 
-A modular dual-clock FIFO design exploring clock-domain crossing (CDC).
+A memory-mapped timer peripheral using an **APB3-style slave interface**.
 
-**Design blocks include:**
+**Register map**
+
+| Address | Register | Access | Function |
+|---|---|---|---|
+| `0x00` | LOAD | Read / Write | Holds the timer reload value |
+| `0x04` | CTRL | Read / Write | Starts, restarts, or stops the timer |
+| `0x08` | COUNT | Read only | Returns the current countdown value |
+| `0x0C` | STATUS | Read only | Reports timer completion |
+
+**Interface signals:** `PCLK`, `PRESETn`, `PSEL`, `PENABLE`, `PWRITE`, `PADDR`, `PWDATA`, `PRDATA`, `PREADY`, and `PSLVERR`.
+
+The current RTL is parameterized by counter width and implements a zero-wait-state response. The supplied SystemVerilog testbench exercises APB transactions and timer behaviour. See the project directory for the complete test sequence and simulation log.
+
+### UART Transmitter
+
+[Explore the UART Transmitter source and testbench](./UART/UART%20Transmitter)
+
+A parameterized UART TX block that serializes an 8-bit input using a finite-state machine.
+
+- Configurable `CLKS_PER_BIT` timing parameter.
+- Idle, start, data, and stop states.
+- LSB-first data transmission.
+- Active-low asynchronous reset.
+- `busy` indication during frame transmission.
+- SystemVerilog testbench with bit-level checks and waveform generation.
+
+The transmitter uses a default `CLKS_PER_BIT` value of 217. Choose the parameter to match the system clock and target baud rate:
+
+`CLKS_PER_BIT = clock_frequency / baud_rate`
+
+The testbench source documents the stimulus and checking approach. Run it with the instructions below and inspect the generated waveform for exact timing.
+
+### Asynchronous FIFO
+
+[Explore the Asynchronous FIFO](./Asynchronous%20FIFO)
+
+A dual-clock FIFO architecture covering clock-domain crossing concepts.
+
 - FIFO memory.
-- Write-pointer and read-pointer handlers.
+- Independent read and write pointer handlers.
 - Binary-to-Gray pointer conversion.
-- Pointer synchronizer stages.
+- Synchronizer stages between clock domains.
 - Full and empty status generation.
 - SystemVerilog testbench.
 
-**Concepts explored:** independent clock domains, Gray coding, pointer wrap-around, synchronization, and FIFO status logic.
+Key concepts include pointer wrap-around, Gray coding, synchronization latency, and safe status generation across asynchronous clock domains.
 
-### 2. UART Receiver
+### FPGA Image Processing Accelerator
 
-[View UART Receiver](./UART/UART%20receiver)
+[Explore the Image Processing Accelerator](./ImageProcessingAccelerator)
 
-A UART receiver implemented in Verilog HDL, accompanied by a SystemVerilog testbench.
+An FPGA-oriented image processing datapath with a ROM-based image source and VGA output path. The current design is configured around a **64 × 48** source image and selectable processing modes.
 
-- RTL module: `uart_receiver.v`
-- Testbench: `tb_uart_receiver.sv`
-
-The testbench is intended to exercise serial reception and inspect the received data and receiver behaviour in simulation.
-
-### 3. FPGA Image Processing Accelerator
-
-[View project source](./ImageProcessingAccelerator)
-
-An FPGA-oriented image-processing design written in Verilog HDL.
-
-**Main RTL files:**
-- `image_processor_top.v` — top-level integration.
-- `image_processor_core.v` — image-processing core.
-- `image_rom_rgb.v` — source image ROM interface.
-- `vga_controller.v` — VGA timing and display interface.
-
-The current core is configured for a **64 × 48** image (3,072 pixels), with a four-bit processing-mode input. The display interface generates VGA output. The source image is loaded using `$readmemh`; place the required `image.hex` file in the simulator or Quartus project working directory before running the design.
-
-The design explores image storage, pixel processing, line buffers for neighbourhood operations, filter selection, and display timing.
-
-> The repository contains the RTL source. Check the project files and hardware setup before assuming a particular board configuration or a live-camera input.
+The source includes a top-level integration module, processing core, RGB image ROM, and VGA controller. The image data is loaded with `$readmemh`; make sure the required memory file is available in the simulator or FPGA project working directory.
 
 ---
 
 ## Tools and Technologies
 
-| Tool / Language | Use |
+| Tool / Language | Usage |
 |---|---|
-| Verilog HDL | RTL design |
-| SystemVerilog | Testbench development |
+| Verilog HDL | Synthesizable RTL design |
+| SystemVerilog | Testbench development and verification stimulus |
 | Icarus Verilog | RTL compilation and simulation |
-| Verilator | Linting and simulation workflows |
+| Verilator | Linting and compiled simulation |
 | GTKWave | VCD waveform inspection |
 | ModelSim | HDL simulation where configured |
-| Intel Quartus II | Synthesis and FPGA implementation for Altera devices |
+| Intel Quartus II | Intel FPGA synthesis and implementation |
 | AMD/Xilinx Vivado | FPGA design exploration |
-| Visual Studio Code | RTL editing |
-| Git and GitHub | Version control and project hosting |
+| VS Code | RTL editing |
+| Git and GitHub | Version control |
 
-Tool usage varies by project. Not every design has been implemented on physical FPGA hardware.
+Not every project has been synthesized or tested on physical hardware. Refer to each project directory for its available simulation and implementation evidence.
 
 ## Running Simulations
 
-### Verilog testbench with Icarus Verilog
+Run commands from the relevant project directory and replace filenames with the files used by that design.
 
-From the relevant project directory:
+### Icarus Verilog
+
+For a Verilog design and testbench:
 
 ```bash
 iverilog -g2012 -o sim <design_file>.v <testbench_file>.v
 vvp sim
 ```
 
-For a testbench that writes a VCD file:
+For a SystemVerilog testbench:
 
 ```bash
-gtkwave dump.vcd
+iverilog -g2012 -s <testbench_module> -o sim <design_file>.v <testbench_file>.sv
+vvp sim
 ```
 
-Add waveform dumping to the testbench:
+If the testbench creates a VCD file:
 
-```verilog
+```bash
+gtkwave <waveform_file>.vcd
+```
+
+A typical waveform dump block is:
+
+```systemverilog
 initial begin
     $dumpfile("dump.vcd");
     $dumpvars(0, tb_top);
 end
 ```
 
-Replace `tb_top` and the filenames with the actual testbench module and source files.
+### UART Transmitter — Icarus Verilog
 
-### SystemVerilog testbench
-
-Use the SystemVerilog flag when compiling a `.sv` testbench:
+From `UART/UART Transmitter`:
 
 ```bash
-iverilog -g2012 -o sim <design_file>.v <testbench_file>.sv
+iverilog -g2012 -s tb_uart_transmitter -o sim \
+  uart_transmitter.v tb_uart_transmitter.sv
 vvp sim
+gtkwave uart_transmitter.vcd
 ```
 
-### UART receiver with Verilator
+### APB Timer — Icarus Verilog
 
-From `UART/UART receiver`, a waveform-enabled build can be run with:
+From `Bus-Based protocol peripheral/APB Timer`:
+
+```bash
+iverilog -g2012 -s tb_apb_timer -o sim \
+  apb_timer.v tb_apb_timer.sv
+vvp sim
+gtkwave apb_timer.vcd
+```
+
+### Verilator
+
+For a timing-enabled SystemVerilog testbench with tracing enabled:
 
 ```bash
 verilator --binary --sv --timing --trace --Wall \
-  --top-module tb_uart_receiver \
-  uart_receiver.v tb_uart_receiver.sv
-end
+  --top-module <testbench_module> \
+  <design_file>.v <testbench_file>.sv
 ```
 
-Run the generated executable from the build directory created by Verilator, then open the generated VCD file with GTKWave. Check your Verilator version and build output if the executable or waveform filename differs.
+Run the generated executable from the build directory (usually `obj_dir/`) and open the VCD file emitted by the testbench in GTKWave. Check the build output and Verilator version if generated filenames differ.
 
-## Verification Workflow
+## Verification Approach
 
-For each design, the intended workflow is:
+The testbenches in this repository use different levels of checking depending on the project. A useful verification progression is:
 
-1. Understand the specification and expected behaviour.
-2. Implement the RTL using a suitable modelling style.
-3. Develop a testbench with meaningful input sequences.
-4. Cover normal operation, boundary conditions, and corner cases.
-5. Inspect waveforms and simulation output.
-6. Fix mismatches and repeat the tests.
-7. For FPGA-targeted designs, run synthesis and review implementation reports.
+1. **Reset checks:** confirm known initial values and idle outputs.
+2. **Normal transactions:** exercise expected functional behaviour.
+3. **Boundary cases:** test zero, maximum values, and counter or pointer limits.
+4. **Protocol timing:** check setup/access sequencing, bit periods, and handshakes.
+5. **Error cases:** exercise invalid addresses or unsupported operations where applicable.
+6. **Randomized stimulus:** broaden input combinations beyond directed tests.
+7. **Waveform inspection:** correlate signal transitions with the expected cycle-level behaviour.
 
-Simulation demonstrates behaviour for the applied test cases; it does not by itself prove exhaustive correctness or successful hardware implementation.
+A passing simulation only establishes that the applied test cases passed. It does not establish exhaustive correctness, timing closure, CDC sign-off, or successful FPGA hardware validation.
 
-## Skills Being Developed
+## Engineering Topics
 
-- **Combinational RTL:** Boolean logic, arithmetic circuits, multiplexing.
-- **Sequential RTL:** registers, flip-flops, counters, and state machines.
-- **Datapath architecture:** adders, multipliers, and ALUs.
-- **Memory interfaces:** FIFO storage, read/write pointers, and status flags.
-- **Clock-domain crossing:** Gray-coded pointers and synchronizer structures.
-- **Serial communication:** UART receiver design and testbench development.
-- **Image processing hardware:** ROM-based image input, pixel operations, line buffers, and VGA display.
-- **Design verification:** stimulus generation, waveform analysis, and debugging.
-- **FPGA flow:** synthesis, pin assignment, and hardware-oriented implementation.
+- Combinational and sequential RTL modelling.
+- Arithmetic datapath design and control logic.
+- FSM design and implementation.
+- Synchronous and asynchronous FIFO architecture.
+- Clock-domain crossing and Gray-coded pointer synchronization.
+- UART framing, baud-rate timing, and serial interfaces.
+- APB3 peripheral register maps and bus transactions.
+- Testbench architecture, scoreboards, directed tests, and randomized stimulus.
+- Waveform-based debugging.
+- FPGA synthesis and implementation flows.
 
-## What's Next
+## Planned Extensions
 
-Areas for continued development include:
-
-- More systematic self-checking testbenches and assertions.
-- Additional UART verification scenarios and transmitter integration.
-- Deeper asynchronous FIFO corner-case and CDC verification.
-- Parameterized RTL blocks and reusable design libraries.
-- RAM/ROM inference and memory architecture experiments.
-- Processor datapaths and a small RISC-V implementation.
-- More FPGA implementations with documented timing and resource reports.
+- UART receiver/transmitter integration and loopback verification.
+- More reusable bus-functional tasks and self-checking SystemVerilog testbenches.
+- Assertions and functional coverage for protocol and FIFO corner cases.
+- Parameterized reusable RTL IP blocks.
+- Additional bus-connected peripherals and register interfaces.
+- More FPGA implementation reports with timing and resource data.
 
 ## Feedback
 
-Suggestions, bug reports, and constructive feedback are welcome. Feel free to explore the project folders and follow the RTL, testbench, and simulation evidence available for each design.
+Suggestions, bug reports, and constructive feedback are welcome. Explore the project directories to see each module's RTL, testbench, waveform, and implementation artifacts.
 
 <p align="center">
-  <strong>Understand the logic. Design the hardware. Verify the behaviour.</strong>
+  <strong>Design the RTL. Verify the behaviour. Understand the hardware.</strong>
 </p>
